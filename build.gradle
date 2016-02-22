@@ -1,0 +1,50 @@
+
+description = "HTML Writer Project"
+
+apply plugin: 'base'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+group = 'scu'
+version = '1.0.3-SNAPSHOT'
+
+archivesBaseName = 'html-writer'
+
+configurations {
+    deployerJars
+}
+
+repositories {
+  maven { 
+    url 'http://svn.scu.edu.au/nexus/content/groups/public/'
+  }
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: stagingUrl) {
+        authentication(userName: deployUsername, password: deployPassword)
+      }
+      snapshotRepository(url: snapshotUrl) {
+        authentication(userName: snapshotDeployUsername, password: snapshotDeployPassword)
+      }
+    }
+  }
+}
+
+dependencies {
+  //compile 'org.bluestemsoftware.open.maven.tparty:xerces-impl:2.9.0'
+  compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:2.11.0_1'
+
+  testCompile 'org.testng:testng:6.9.10'
+}
+
+test {
+  useTestNG()
+}
+
+boolean isSnapshot() {
+    project.version.contains("SNAPSHOT")
+}
