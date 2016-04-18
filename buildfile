@@ -1,5 +1,5 @@
 
-THIS_VERSION = "1.0.3-SNAPSHOT"
+THIS_VERSION = "1.0.3"
 
 repositories.remote << 'http://svn.scu.edu.au/nexus/content/repositories/central/'
 repositories.release_to[:url] = 'http://svn.scu.edu.au/nexus/content/repositories/releases'
