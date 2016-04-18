@@ -66,7 +66,25 @@ The fundamental class in the system is an interface called `Element`.  All the m
 
 ## Creating Tables
 
-The 
+The `TableBuilder` class simplifies building tables.  Some examples:
+
+    TableBuilder b = new TableBuilder();
+    b.setColumns("a","b");
+    b.addRow("ra","rb");
+    b.addRow("rd","re");
+    b.build(parent);
+    
+this appends the following HTML to the children of `parent`,
+
+    <table>
+      <thead>
+        <tr><th class="a">a</th><th class=\"b\">b</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="row1">a</td><td class="row1">b</td></tr>
+        <tr><td class="row2">d</td><td class="row2">e</td></tr>
+      </tbody>
+    </table>
 
 # Building
 
@@ -78,19 +96,4 @@ or
     
 which publishes the latest version to the shared repository.
 
-## Modifying
 
-    $ buildr eclipse
-
-will auto-generate the eclipse configuration files.
-
-## Dependencies
-
-`buildr` downloads the dependencies automatically from the Maven repository, 
-but the system also depends on one local project, `HTMLWriter`.  There is a 
-copy of the pre-built jar file (and maven metadata) on a local repository on
-idmdev1---to use the buildfile as committed you will need ssh access to this system.  If this isn't possible, you can easily modify the local repository location in the buildfiles of both HTMLWriter and saml-test.
-
-
-You can always download and build HTMLWriter locally and add it to the eclipse
-project's path (best if you need to make changes to the HTMLWriter code).
