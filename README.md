@@ -1,5 +1,7 @@
-﻿SAML Test Application
-=====================
+HTMLWriter
+====
+A fluent HTML library
+---
 
 HTMLWriter is a simple library for writing HTML in a fluent style.  Some examples
 should illustrate what it does:
