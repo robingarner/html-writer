@@ -1,9 +1,5 @@
 
-THIS_VERSION = "1.0.4-SNAPSHOT"
-
-repositories.remote << 'http://svn.scu.edu.au/nexus/content/repositories/central/'
-repositories.release_to[:url] = 'http://svn.scu.edu.au/nexus/content/repositories/releases'
-repositories.snapshot_to[:url] = 'http://svn.scu.edu.au/nexus/content/repositories/snapshots'
+THIS_VERSION = "1.0.4"
 
 SOURCE = ['src/main/resources',
           'src/main/java' ]
