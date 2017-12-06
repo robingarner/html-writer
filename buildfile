@@ -1,5 +1,5 @@
 
-THIS_VERSION = "1.0.4-SNAPSHOT"
+THIS_VERSION = "1.1.0-SNAPSHOT"
 
 SOURCE = ['src/main/resources',
           'src/main/java' ]
