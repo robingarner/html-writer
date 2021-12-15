@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.github.robingarner.htmlwriter.impl.Link;
+import org.github.robingarner.htmlwriter.impl.Script;
 
 public interface Element {
 
@@ -126,16 +127,6 @@ public interface Element {
   Element element(String name, Collection<Attribute> attrs);
 
 
-  /**
-   * A link element (to add resources to a header).  Not to be confused with an
-   * &lt;a&gt; element.
-   *
-   * @param rel The "rel" element of the link
-   * @param attrs Additional attributes for the link
-   * @return this
-   */
-  Link link(String rel, Attribute...attrs);
-
   /*
    * Creator methods for sub-elements
    */
@@ -231,7 +222,19 @@ public interface Element {
    * @param attrs Attributes
    * @return The new element.
    */
+  Element h1(Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
   Element h1(String string, Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
+  Element h2(Attribute...attrs);
 
   /**
    * @param attrs Attributes
@@ -243,7 +246,19 @@ public interface Element {
    * @param attrs Attributes
    * @return The new element.
    */
+  Element h3(Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
   Element h3(String string, Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
+  Element h4(Attribute...attrs);
 
   /**
    * @param attrs Attributes
@@ -255,7 +270,19 @@ public interface Element {
    * @param attrs Attributes
    * @return The new element.
    */
+  Element h5(Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
   Element h5(String string, Attribute...attrs);
+
+  /**
+   * @param attrs Attributes
+   * @return The new element.
+   */
+  Element h6(Attribute...attrs);
 
   /**
    * @param attrs Attributes
@@ -324,6 +351,16 @@ public interface Element {
   Element li(Attribute...attrs);
 
   /**
+   * A link element (to add resources to a header).  Not to be confused with an
+   * &lt;a&gt; element.
+   *
+   * @param rel The "rel" element of the link
+   * @param attrs Additional attributes for the link
+   * @return this
+   */
+  Link link(String rel, Attribute...attrs);
+
+  /**
    * @param attrs Attributes
    * @return The new element.
    */
@@ -382,6 +419,16 @@ public interface Element {
    * @return The new element.
    */
   Element q(Attribute...attrs);
+
+  /**
+   * A link element (to add resources to a header).  Not to be confused with an
+   * &lt;a&gt; element.
+   *
+   * @param rel The "rel" element of the link
+   * @param attrs Additional attributes for the link
+   * @return this
+   */
+  Script script(Attribute...attrs);
 
   /**
    * @param attrs Attributes

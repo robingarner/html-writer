@@ -1,6 +1,9 @@
 package org.github.robingarner.htmlwriter;
 
-import org.github.robingarner.htmlwriter.HTML;
+import java.util.Arrays;
+import java.util.List;
+
+import org.github.robingarner.htmlwriter.impl.Script;
 import org.github.robingarner.htmlwriter.impl.SimpleElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -122,5 +125,28 @@ public class HTMLTest extends BaseTest {
     Assert.assertEquals(render(HTML.html().link("stylesheet").useCredentials()), "<link rel=\"stylesheet\" crossorigin=\"use-credentials\"/>");
     Assert.assertEquals(render(HTML.html().link("stylesheet").href("url")), "<link rel=\"stylesheet\" href=\"url\"/>");
     Assert.assertEquals(render(HTML.html().link("stylesheet").integrity("abc")), "<link rel=\"stylesheet\" integrity=\"abc\"/>");
+  }
+
+  @Test
+  public void script() {
+    Script script = HTML.html().script();
+    script.empty();
+    Assert.assertEquals(render(script), "<script></script>");
+    Assert.assertEquals(render(HTML.html().script()), "<script></script>");
+  }
+
+  @Test public void example() {
+    Element body = HTML.html();
+    Element panel = body.div().cls("span6 panel panel-info saml-creds");
+    panel.div().cls("panel-heading").h4("Exception");
+    panel.cr();
+    Element p = panel.p();
+    List<String> lines = Arrays.asList("first", "second");
+    for (String element : lines) {
+      p.br().text(element);
+      p.cr();
+    }
+    panel.p();
+    System.out.println(render(panel));
   }
 }

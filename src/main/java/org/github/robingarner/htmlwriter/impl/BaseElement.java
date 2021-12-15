@@ -8,15 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.github.robingarner.htmlwriter.Attribute;
-import org.github.robingarner.htmlwriter.AttributeFactory;
 import org.github.robingarner.htmlwriter.Element;
 
 /**
  * Basic HTML element
  */
 public abstract class BaseElement implements Element {
-
-  private final AttributeFactory atf = new AttributeFactoryImpl();
 
   private final Map<String, Attribute> attrs = new LinkedHashMap<>();
 
@@ -63,7 +60,7 @@ public abstract class BaseElement implements Element {
   /** {@inheritDoc} */
   @Override
   public Element setAttr(String name, String value) {
-    attrs.put(name, atf.attr(name, value));
+    attrs.put(name, new AttributeImpl(name, value));
     return this;
   }
 
@@ -78,21 +75,21 @@ public abstract class BaseElement implements Element {
   /** {@inheritDoc} */
   @Override
   public Element cls(String classNames) {
-    setAttr(atf.cls(classNames));
+    setAttr(new AttributeImpl("class", classNames));
     return this;
   }
 
   /** {@inheritDoc} */
   @Override
   public Element id(String id) {
-    setAttr(atf.id(id));
+    setAttr(new AttributeImpl("id",id));
     return this;
   }
 
   /** {@inheritDoc} */
   @Override
   public Element style(String css) {
-    setAttr(atf.style(css));
+    setAttr(new AttributeImpl("style", css));
     return this;
   }
 
@@ -244,8 +241,20 @@ public abstract class BaseElement implements Element {
 
   /** {@inheritDoc} */
   @Override
+  public SimpleElement h1(Attribute... attrs) {
+    return heading(1,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public SimpleElement h1(String string, Attribute... attrs) {
     return heading(1,string,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public SimpleElement h2(Attribute... attrs) {
+    return heading(2,attrs);
   }
 
   /** {@inheritDoc} */
@@ -256,8 +265,20 @@ public abstract class BaseElement implements Element {
 
   /** {@inheritDoc} */
   @Override
+  public SimpleElement h3(Attribute... attrs) {
+    return heading(3,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public SimpleElement h3(String string, Attribute... attrs) {
     return heading(3,string,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public SimpleElement h4(Attribute... attrs) {
+    return heading(4,attrs);
   }
 
   /** {@inheritDoc} */
@@ -268,8 +289,20 @@ public abstract class BaseElement implements Element {
 
   /** {@inheritDoc} */
   @Override
+  public SimpleElement h5(Attribute... attrs) {
+    return heading(5,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public SimpleElement h5(String string, Attribute... attrs) {
     return heading(5,string,attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public SimpleElement h6(Attribute... attrs) {
+    return heading(6,attrs);
   }
 
   /** {@inheritDoc} */
@@ -425,6 +458,12 @@ public abstract class BaseElement implements Element {
   @Override
   public SimpleElement u(Attribute... attrs) {
     return element("u",attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public Script script(Attribute... attrs) {
+    return append(new Script(), attrs);
   }
 
   /** {@inheritDoc} */
