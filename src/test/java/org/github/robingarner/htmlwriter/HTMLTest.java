@@ -3,7 +3,6 @@ package org.github.robingarner.htmlwriter;
 import java.util.Arrays;
 import java.util.List;
 
-import org.github.robingarner.htmlwriter.impl.Script;
 import org.github.robingarner.htmlwriter.impl.SimpleElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -129,9 +128,6 @@ public class HTMLTest extends BaseTest {
 
   @Test
   public void script() {
-    Script script = HTML.html().script();
-    script.empty();
-    Assert.assertEquals(render(script), "<script></script>");
     Assert.assertEquals(render(HTML.html().script()), "<script></script>");
   }
 
