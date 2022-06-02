@@ -378,14 +378,26 @@ public abstract class BaseElement implements Element {
 
   /** {@inheritDoc} */
   @Override
-  public SimpleElement input(Attribute... attrs) {
-    return element("input",attrs);
+  public Input input(Attribute... attrs) {
+    return append(new Input(),attrs);
   }
 
   /** {@inheritDoc} */
   @Override
   public SimpleElement label(Attribute... attrs) {
     return element("label",attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public SimpleElement li(Attribute... attrs) {
+    return element("li",attrs);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public Link link(String rel, Attribute... attrs) {
+    return append(new Link(rel), attrs);
   }
 
   /** {@inheritDoc} */
@@ -440,18 +452,6 @@ public abstract class BaseElement implements Element {
   @Override
   public SimpleElement dl(Attribute... attrs) {
     return element("dl",attrs);
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public SimpleElement li(Attribute... attrs) {
-    return element("li",attrs);
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public Link link(String rel, Attribute... attrs) {
-    return append(new Link(rel), attrs);
   }
 
   /** {@inheritDoc} */

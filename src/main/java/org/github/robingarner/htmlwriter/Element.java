@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.github.robingarner.htmlwriter.impl.Input;
 import org.github.robingarner.htmlwriter.impl.Link;
 import org.github.robingarner.htmlwriter.impl.Script;
 
@@ -330,7 +331,7 @@ public interface Element {
    * @param attrs Attributes
    * @return The new element.
    */
-  Element input(Attribute...attrs);
+  Input input(Attribute...attrs);
 
   /**
    * @param attrs Attributes
